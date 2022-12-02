@@ -1,0 +1,2 @@
+module Chart::TopPodcastsHelper
+end
