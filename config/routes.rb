@@ -9,4 +9,5 @@ Rails.application.routes.draw do
   end
 
   resources :albums, only: [:show]
+  resources :tracks, only: [:show]
 end

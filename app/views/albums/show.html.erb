@@ -3,6 +3,6 @@
 <h2>Tracks:</h2>
 <ul>
     <% @album.tracks["data"].each do |track| %>
-        <li><%= track["title"] %>
+        <li><%= link_to track["title"], track_path(track["id"]) %>
     <% end %>
 </ul>
