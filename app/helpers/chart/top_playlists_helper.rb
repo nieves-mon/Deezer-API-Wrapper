@@ -1,0 +1,2 @@
+module Chart::TopPlaylistsHelper
+end
