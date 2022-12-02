@@ -1,9 +1,11 @@
+require "ostruct"
+
 class DeezerApi::Client
     BASE_URL = "https://api.deezer.com"
 
     def top_albums
         response = connection.get("/chart/albums")
-        JSON.parse(response.body)
+        JSON.parse(response.body)["tracks"]["data"]
     end
 
     def top_tracks
