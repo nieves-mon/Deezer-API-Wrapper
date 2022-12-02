@@ -7,4 +7,6 @@ Rails.application.routes.draw do
     resources :top_playlists, only: [:index]
     resources :top_podcasts, only: [:index]
   end
+
+  resources :albums, only: [:show]
 end
