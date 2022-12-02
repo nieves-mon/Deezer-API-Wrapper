@@ -11,4 +11,5 @@ Rails.application.routes.draw do
   resources :albums, only: [:show]
   resources :tracks, only: [:show]
   resources :artists, only: [:show]
+  resources :playlists, only: [:show]
 end
