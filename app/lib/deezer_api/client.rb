@@ -27,6 +27,12 @@ class DeezerApi::Client
         OpenStruct.new(data)
     end
 
+    def playlist(id)
+        response = connection.get("/playlist/#{id}")
+        data = JSON.parse(response.body)
+        OpenStruct.new(data)
+    end
+
     private
         def connection
             @connection ||= Faraday.new(url: BASE_URL)
