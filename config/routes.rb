@@ -3,5 +3,6 @@ Rails.application.routes.draw do
   namespace :chart do
     resources :top_albums, only: [:index]
     resources :top_tracks, only: [:index]
+    resources :top_artists, only: [:index]
   end
 end
