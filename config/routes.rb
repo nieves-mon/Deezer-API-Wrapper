@@ -5,5 +5,6 @@ Rails.application.routes.draw do
     resources :top_tracks, only: [:index]
     resources :top_artists, only: [:index]
     resources :top_playlists, only: [:index]
+    resources :top_podcasts, only: [:index]
   end
 end
