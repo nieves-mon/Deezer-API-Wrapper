@@ -1,0 +1,8 @@
+<h1><%= @album.title %></h1>
+<h3><%= link_to @album.artist["name"], artist_ath(@album.artist["id"]) %></h3>
+<h2>Tracks:</h2>
+<ul>
+    <% @album.tracks["data"].each do |track| %>
+        <li><%= link_to track["title"], track_path(track["id"]) %>
+    <% end %>
+</ul>

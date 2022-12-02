@@ -1,5 +1,5 @@
 <ul>
     <% @top_tracks.each do |track| %>
-        <li><%= track.title %></li>
+        <li><%= link_to track.title, track_path(track.id) %></li>
     <% end %>
 </ul>

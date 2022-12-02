@@ -1,5 +1,5 @@
 <ul>
     <% @top_playlists.each do |playlist| %>
-        <li><%= playlist.title %></li>
+        <li><%= link_to playlist.title, playlist_path(playlist.id) %></li>
     <% end %>
 </ul>

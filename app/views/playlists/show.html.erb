@@ -1,0 +1,8 @@
+<h1><%= @playlist.title %></h1>
+<p><%= @playlist.description %></p>
+<h2>Tracks:</h2>
+<ul>
+    <% @playlist.tracks["data"].each do |track| %>
+        <li><%= link_to track["title"], track_path(track["id"]) %></li>
+    <% end %>
+</ul>

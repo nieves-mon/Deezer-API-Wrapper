@@ -9,6 +9,30 @@ class DeezerApi::Client
         data.map { |el| OpenStruct.new(el) }
     end
 
+    def album(id)
+        response = connection.get("/album/#{id}")
+        data = JSON.parse(response.body)
+        OpenStruct.new(data)
+    end
+
+    def track(id)
+        response = connection.get("/track/#{id}")
+        data = JSON.parse(response.body)
+        OpenStruct.new(data)
+    end
+
+    def artist(id)
+        response = connection.get("/artist/#{id}")
+        data = JSON.parse(response.body)
+        OpenStruct.new(data)
+    end
+
+    def playlist(id)
+        response = connection.get("/playlist/#{id}")
+        data = JSON.parse(response.body)
+        OpenStruct.new(data)
+    end
+
     private
         def connection
             @connection ||= Faraday.new(url: BASE_URL)
