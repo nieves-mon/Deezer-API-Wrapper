@@ -8,11 +8,17 @@
         <div class="col-auto md-auto">
             <p class="fs-5 fw-semibold fst-italic text-center"><%= @playlist.description %></p>
             <h2 class="fs-4 fw-semibold">Tracks</h2>
-            <ol>
-                <% @playlist.tracks["data"].each do |track| %>
-                    <li class="fs-5"><%= link_to track["title"], track_path(track["id"]) %>
-                <% end %>
-            </ol>
+            <table class="table align-middle">
+                <tbody>
+                    <% @playlist.tracks["data"].each_with_index do |track, i| %>
+                        <tr>
+                            <th scope="row"><%= i + 1 %></th>
+                            <td class="fs-5"><%= link_to track["title"], track_path(track["id"]) %></td>
+                            <td>by <%= link_to track["artist"]["name"], artist_path(track["artist"]["id"]) %></td>
+                        </tr>
+                    <% end %>
+                </tbody>
+            </table>
         </div>
     </div>
 </div>
