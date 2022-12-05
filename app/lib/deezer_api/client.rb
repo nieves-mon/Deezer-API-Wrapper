@@ -1,7 +1,7 @@
 require "ostruct"
 
 class DeezerApi::Client
-    BASE_URL = "https://api.deezer.com"
+    BASE_URL = "https://api.deezer.com".freeze
 
     def chart(type)
         request(
