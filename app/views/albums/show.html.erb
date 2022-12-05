@@ -2,14 +2,14 @@
     <div class="row justify-content-center">
         <div class="col-auto md-auto">
             <h1 class="text-center fs-1 fw-bold"><%= @album.title %></h1>
-            <h3 class="text-center fs-3 fw-semibold">by <%= link_to @album.artist["name"], artist_path(@album.artist["id"]) %></h3>
+            <h3 class="text-center fs-3 fw-semibold">by <%= link_to @album.artist.name, artist_path(@album.artist.id) %></h3>
             <img src="<%= @album.cover_big %>" class="img-thumbnail mx-auto d-block" alt="<%= @album.title %> small album cover">
         </div>
         <div class="col-auto md-auto">
             <h2 class="fs-4 fw-semibold">Tracks</h2>
             <ol>
-                <% @album.tracks["data"].each do |track| %>
-                    <li class="fs-5"><%= link_to track["title"], track_path(track["id"]) %>
+                <% @album.tracks.data.each do |track| %>
+                    <li class="fs-5"><%= link_to track.title, track_path(track.id) %>
                 <% end %>
             </ol>
         </div>

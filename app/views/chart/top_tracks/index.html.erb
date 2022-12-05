@@ -5,9 +5,9 @@
             <% @top_tracks.each_with_index do |track, i| %>
                 <tr>
                     <th scope="row" class="fs-5">#<%= i + 1 %></th>
-                    <td><img src="<%= track.artist["picture_small"] %>" class="img-thumbnail" alt="<%= track.artist["name"] %> small artist picture"></td>
+                    <td><img src="<%= track.artist.picture_small %>" class="img-thumbnail" alt="<%= track.artist.name %> small artist picture"></td>
                     <td><%= link_to track.title, track_path(track.id), class: "fs-5 fw-semibold" %></td>
-                    <td>by <%= link_to track.artist["name"], artist_path(track.artist["id"]) %></td>
+                    <td>by <%= link_to track.artist.name, artist_path(track.artist.id) %></td>
                 </tr>
             <% end %>
         </tbody>

@@ -1,12 +1,12 @@
 <div class="container-sm my-4">
     <div class="row justify-content-center">
         <div class="col-auto md-auto">
-            <img src="<%= @track.artist["picture_big"] %>" class="img-thumbnail mx-auto d-block" alt="<%= @track.artist["name"] %> big artist picture">
+            <img src="<%= @track.artist.picture_big %>" class="img-thumbnail mx-auto d-block" alt="<%= @track.artist.name %> big artist picture">
         </div>
         <div class="col-auto md-auto text-center align-self-center">
             <h1 class="text-center fs-1 fw-bold"><%= @track.title %></h1>
-            <h5 class="text-center">from <%= link_to @track.album["title"], album_path(@track.album["id"]) %></h5>
-            <h3 class="text-center fs-3 fw-semibold">by <%= link_to @track.artist["name"], artist_path(@track.artist["id"]) %></h3>
+            <h5 class="text-center">from <%= link_to @track.album.title, album_path(@track.album.id) %></h5>
+            <h3 class="text-center fs-3 fw-semibold">by <%= link_to @track.artist.name, artist_path(@track.artist.id) %></h3>
             <%= audio_tag @track.preview, controls: true %>
         </div>
     </div>

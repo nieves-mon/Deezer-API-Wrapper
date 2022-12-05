@@ -10,11 +10,11 @@
             <h2 class="fs-4 fw-semibold">Tracks</h2>
             <table class="table align-middle">
                 <tbody>
-                    <% @playlist.tracks["data"].each_with_index do |track, i| %>
+                    <% @playlist.tracks.data.each_with_index do |track, i| %>
                         <tr>
                             <th scope="row"><%= i + 1 %></th>
-                            <td class="fs-5"><%= link_to track["title"], track_path(track["id"]) %></td>
-                            <td>by <%= link_to track["artist"]["name"], artist_path(track["artist"]["id"]) %></td>
+                            <td class="fs-5"><%= link_to track.title, track_path(track.id) %></td>
+                            <td>by <%= link_to track.artist.name, artist_path(track.artist.id) %></td>
                         </tr>
                     <% end %>
                 </tbody>
