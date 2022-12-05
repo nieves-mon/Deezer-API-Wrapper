@@ -1,5 +1,15 @@
-<ul>
-    <% @top_playlists.each do |playlist| %>
-        <li><%= link_to playlist.title, playlist_path(playlist.id) %></li>
-    <% end %>
-</ul>
+<div class="container-sm my-5">
+    <h1 class="fw-bold fs-1 text-center">Top 10 Playlists</h1>
+    <table class="table align-middle">
+        <tbody>
+            <% @top_playlists.each_with_index do |playlist, i| %>
+                <tr>
+                    <th scope="row" class="fs-5">#<%= i + 1 %></th>
+                    <td><img src="<%= playlist.picture_small %>" class="img-thumbnail" alt="<%= playlist.title%> small playlist picture"></td>
+                    <td><%= link_to playlist.title, playlist_path(playlist.id), class: "fs-5 fw-semibold" %></td>
+                    <td>by <%= link_to playlist.user["name"] %></td>
+                </tr>
+            <% end %>
+        </tbody>
+    </table>
+</div>

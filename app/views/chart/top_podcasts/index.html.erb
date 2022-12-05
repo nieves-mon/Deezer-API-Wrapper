@@ -1,5 +1,14 @@
-<ul>
-    <% @top_podcasts.each do |podcast| %>
-        <li><%= podcast.title %></li>
-    <% end %>
-</ul>
+<div class="container-sm my-5">
+    <h1 class="fw-bold fs-1 text-center">Top 10 Podcasts</h1>
+    <table class="table align-middle">
+        <tbody>
+            <% @top_podcasts.each_with_index do |podcast, i| %>
+                <tr>
+                    <th scope="row" class="fs-5">#<%= i + 1 %></th>
+                    <td><img src="<%= podcast.picture_small %>" class="img-thumbnail" alt="<%= podcast.title %> small podcast picture"></td>
+                    <td class="fs-5 fw-semibold"><%= podcast.title %></td>
+                </tr>
+            <% end %>
+        </tbody>
+    </table>
+</div>
