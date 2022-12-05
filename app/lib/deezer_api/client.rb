@@ -4,36 +4,46 @@ class DeezerApi::Client
     BASE_URL = "https://api.deezer.com"
 
     def chart(type)
-        response = connection.get("/chart")
-        data = JSON.parse(response.body)[type]["data"]
-        data.map { |el| OpenStruct.new(el) }
+        request(
+            method: "get",
+            endpoint: "/chart/0/#{type}"
+        ).data
     end
 
     def album(id)
-        response = connection.get("/album/#{id}")
-        data = JSON.parse(response.body)
-        OpenStruct.new(data)
+        request(
+            method: "get",
+            endpoint: "/album/#{id}"
+        )
     end
 
     def track(id)
-        response = connection.get("/track/#{id}")
-        data = JSON.parse(response.body)
-        OpenStruct.new(data)
+        request(
+            method: "get",
+            endpoint: "/track/#{id}"
+        )
     end
 
     def artist(id)
-        response = connection.get("/artist/#{id}")
-        data = JSON.parse(response.body)
-        OpenStruct.new(data)
+        request(
+            method: "get",
+            endpoint: "/artist/#{id}"
+        )
     end
 
     def playlist(id)
-        response = connection.get("/playlist/#{id}")
-        data = JSON.parse(response.body)
-        OpenStruct.new(data)
+        request(
+            method: "get",
+            endpoint: "/playlist/#{id}"
+        )
     end
 
     private
+        def request(method:, endpoint:)
+            response = connection.public_send(method, "#{endpoint}")
+            JSON.parse(response.body, object_class: OpenStruct)
+        end
+
         def connection
             @connection ||= Faraday.new(url: BASE_URL)
         end
