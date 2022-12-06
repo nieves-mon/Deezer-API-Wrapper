@@ -45,9 +45,17 @@ class DeezerApi::Client
         )
     end
 
+    def artist_top_tracklist(artist_id, limit = 50)
+        request(
+            method: "get",
+            endpoint: "/artist/#{artist_id}/top",
+            params: {limit: limit}
+        )
+    end
+
     private
-        def request(method:, endpoint:)
-            response = connection.public_send(method, "#{endpoint}")
+        def request(method:, endpoint:, params: {})
+            response = connection.public_send(method, "#{endpoint}", params)
             data = JSON.parse(response.body, object_class: OpenStruct)
             return data if data.error.nil?
             raise ERROR_CODES[data.error.code]
