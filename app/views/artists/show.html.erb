@@ -2,9 +2,9 @@
     <div class="row justify-content-center">
         <div class="col-auto md-auto">
             <h1 class="text-center fs-1 fw-bold"><%= @artist.name %></h1>
-            <img src="<%= @artist.picture_big %>" class="img-thumbnail mx-auto d-block" alt="<%= @artist %> big artist picture">
+            <img src="<%= @artist.picture_big %>" class="img-thumbnail mx-auto d-block" alt="<%= @artist.name %> big artist picture">
         </div>
-        <div class="col-auto md-auto">
+        <div class="col-auto md-auto align-self-center">
             <h2 class="fs-4 fw-semibold">Top Tracks</h2>
             <ol>
                 <% @top_tracklist.data.each do |track| %>
@@ -12,5 +12,18 @@
                 <% end %>
             </ol>
         </div>
+    </div>
+    <div class="row justify-content-center mt-4">
+        <h2 class="fs-2 fw-semibold text-center">Related Artists</h2>
+        <% @related_artists.data.each do |artist| %>
+            <div class="col-auto my-2">
+                <div class="card" style="width: 18rem;">
+                    <img src="<%= artist.picture_big %>" class="card-img-top" alt="<%= artist.name %> big artist picture">
+                    <div class="card-body text-center fs-5 fw-semibold">
+                        <%= link_to artist.name, artist_path(artist.id) %>
+                    </div>
+                </div>
+            </div>
+        <% end %>
     </div>
 </div>

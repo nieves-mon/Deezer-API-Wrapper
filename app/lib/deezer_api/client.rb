@@ -47,10 +47,18 @@ class DeezerApi::Client
         )
     end
 
-    def artist_top_tracklist(artist_id, limit = 50)
+    def artist_top_tracklist(artist_id, limit = 15)
         request(
             method: "get",
             endpoint: "/artist/#{artist_id}/top",
+            params: {limit: limit}
+        )
+    end
+
+    def related_artists(artist_id, limit = 6)
+        request(
+            method: "get",
+            endpoint: "/artist/#{artist_id}/related",
             params: {limit: limit}
         )
     end
