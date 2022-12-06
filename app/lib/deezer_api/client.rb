@@ -3,10 +3,12 @@ require "ostruct"
 class DeezerApi::Client
     class DeezerApiError < StandardError; end
     class DataNotFound < DeezerApiError; end
+    class QueryInvalid < DeezerApiError; end
 
     BASE_URL = "https://api.deezer.com".freeze
 
     ERROR_CODES = {
+        600 => QueryInvalid,
         800 => DataNotFound
     }.freeze
 
