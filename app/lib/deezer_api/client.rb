@@ -3,14 +3,10 @@ require "ostruct"
 class DeezerApi::Client
     class DeezerApiError < StandardError; end
     class DataNotFound < DeezerApiError; end
-    class ServiceBusy < DeezerApiError; end
-    class QueryInvalid < DeezerApiError; end
 
     BASE_URL = "https://api.deezer.com".freeze
 
     ERROR_CODES = {
-        600 => QueryInvalid,
-        700 => ServiceBusy,
         800 => DataNotFound
     }.freeze
 
@@ -52,8 +48,9 @@ class DeezerApi::Client
     private
         def request(method:, endpoint:)
             response = connection.public_send(method, "#{endpoint}")
-            return JSON.parse(response.body, object_class: OpenStruct) if response.success?
-            raise ERROR_CODES[response.status]
+            data = JSON.parse(response.body, object_class: OpenStruct)
+            return data if data.error.nil?
+            raise ERROR_CODES[data.error.code]
         end
 
         def connection
