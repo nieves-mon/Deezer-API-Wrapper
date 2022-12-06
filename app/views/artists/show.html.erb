@@ -4,5 +4,13 @@
             <h1 class="text-center fs-1 fw-bold"><%= @artist.name %></h1>
             <img src="<%= @artist.picture_big %>" class="img-thumbnail mx-auto d-block" alt="<%= @artist %> big artist picture">
         </div>
+        <div class="col-auto md-auto">
+            <h2 class="fs-4 fw-semibold">Top Tracks</h2>
+            <ol>
+                <% @top_tracklist.data.each do |track| %>
+                    <li class="fs-5"><%= link_to track.title, track_path(track.id) %>
+                <% end %>
+            </ol>
+        </div>
     </div>
 </div>

@@ -7,7 +7,7 @@
                     <th scope="row" class="fs-5">#<%= i + 1 %></th>
                     <td><img src="<%= playlist.picture_small %>" class="img-thumbnail" alt="<%= playlist.title%> small playlist picture"></td>
                     <td><%= link_to playlist.title, playlist_path(playlist.id), class: "fs-5 fw-semibold" %></td>
-                    <td>by <%= link_to playlist.user["name"] %></td>
+                    <td>by <%= playlist.user.name %></td>
                 </tr>
             <% end %>
         </tbody>
